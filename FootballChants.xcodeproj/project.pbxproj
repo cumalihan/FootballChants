@@ -28,6 +28,10 @@
 		AE4C484B283149E900371C88 /* everton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE4C4837283149E800371C88 /* everton.mp3 */; };
 		AE4C484C283149E900371C88 /* Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4C4838283149E800371C88 /* Teams.swift */; };
 		AE4C484F2831514C00371C88 /* ChantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4C484E2831514C00371C88 /* ChantsViewController.swift */; };
+		AE4C48522832947B00371C88 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4C48512832947B00371C88 /* Team.swift */; };
+		AE4C48542832951400371C88 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4C48532832951400371C88 /* Manager.swift */; };
+		AE4C48572832AAFD00371C88 /* TeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4C48562832AAFD00371C88 /* TeamsViewModel.swift */; };
+		AE4C485A2832D0AD00371C88 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4C48592832D0AD00371C88 /* TeamTableViewCell.swift */; };
 		AE6AC2F5282D499300789D64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6AC2F4282D499300789D64 /* AppDelegate.swift */; };
 		AE6AC2F7282D499300789D64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6AC2F6282D499300789D64 /* SceneDelegate.swift */; };
 		AE6AC2FC282D499300789D64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE6AC2FA282D499300789D64 /* Main.storyboard */; };
@@ -57,6 +61,10 @@
 		AE4C4837283149E800371C88 /* everton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = everton.mp3; sourceTree = "<group>"; };
 		AE4C4838283149E800371C88 /* Teams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teams.swift; sourceTree = "<group>"; };
 		AE4C484E2831514C00371C88 /* ChantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChantsViewController.swift; sourceTree = "<group>"; };
+		AE4C48512832947B00371C88 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		AE4C48532832951400371C88 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		AE4C48562832AAFD00371C88 /* TeamsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewModel.swift; sourceTree = "<group>"; };
+		AE4C48592832D0AD00371C88 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
 		AE6AC2F1282D499300789D64 /* FootballChants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootballChants.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6AC2F4282D499300789D64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE6AC2F6282D499300789D64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +128,31 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		AE4C48502832946700371C88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE4C48512832947B00371C88 /* Team.swift */,
+				AE4C48532832951400371C88 /* Manager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AE4C48552832AAFD00371C88 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AE4C48562832AAFD00371C88 /* TeamsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AE4C48582832D07F00371C88 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE4C48592832D0AD00371C88 /* TeamTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		AE6AC2E8282D499300789D64 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +172,9 @@
 		AE6AC2F3282D499300789D64 /* FootballChants */ = {
 			isa = PBXGroup;
 			children = (
+				AE4C48582832D07F00371C88 /* Views */,
+				AE4C48552832AAFD00371C88 /* ViewModel */,
+				AE4C48502832946700371C88 /* Model */,
 				AE4C484D2831510900371C88 /* ViewControllers */,
 				AE6AC2F4282D499300789D64 /* AppDelegate.swift */,
 				AE6AC2F6282D499300789D64 /* SceneDelegate.swift */,
@@ -242,8 +278,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE4C484F2831514C00371C88 /* ChantsViewController.swift in Sources */,
+				AE4C48572832AAFD00371C88 /* TeamsViewModel.swift in Sources */,
+				AE4C48542832951400371C88 /* Manager.swift in Sources */,
 				AE4C484C283149E900371C88 /* Teams.swift in Sources */,
+				AE4C485A2832D0AD00371C88 /* TeamTableViewCell.swift in Sources */,
 				AE6AC2F5282D499300789D64 /* AppDelegate.swift in Sources */,
+				AE4C48522832947B00371C88 /* Team.swift in Sources */,
 				AE6AC2F7282D499300789D64 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
