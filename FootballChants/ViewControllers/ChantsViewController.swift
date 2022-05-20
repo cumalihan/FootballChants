@@ -21,6 +21,8 @@ class ChantsViewController: UIViewController {
         return tv
     }()
     
+    private lazy var teamsViewModel = TeamsViewModel()
+    
 //     MARK: Lifecycle
     
     override func loadView() {
@@ -44,6 +46,10 @@ private extension ChantsViewController {
     
     func setUp() {
         tableVw.dataSource = self
+        
+        
+        self.navigationController?.navigationBar.topItem?.title = "Football Chants"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
  
         self.view.addSubview(tableVw)
         
@@ -64,15 +70,26 @@ private extension ChantsViewController {
 
 extension ChantsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return teamsViewModel.teams.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let team = teamsViewModel.teams[indexPath.row]
+        print(team)
         let cell = tableVw.dequeueReusableCell(withIdentifier: TeamTableViewCell.cellId, for: indexPath) as! TeamTableViewCell
         
-        cell.configure()
+        cell.configure(with: team, delegate: self)
         
         return cell
+    }
+    
+    
+}
+
+
+extension ChantsViewController: TeamTableViewDelegate {
+    func didTapPlayBack(for team: Team) {
+        print()
     }
     
     

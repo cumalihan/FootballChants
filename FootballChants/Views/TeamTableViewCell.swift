@@ -7,6 +7,13 @@
 
 import UIKit
 
+
+
+protocol TeamTableViewDelegate: class {
+    
+    func didTapPlayBack(for team: Team)
+}
+
 class TeamTableViewCell: UITableViewCell {
     
     static let cellId = "TeamTableViewCell"
@@ -76,6 +83,8 @@ class TeamTableViewCell: UITableViewCell {
         return lbl
     }()
     
+    private weak var delegate: TeamTableViewDelegate?
+    private var team: Team?
     
     
 //    MARK: - Life Cycle
@@ -87,18 +96,25 @@ class TeamTableViewCell: UITableViewCell {
     }
     
     
-    func configure() {
-        containerVw.backgroundColor = TeamType.arsenal.background
+    func configure(with item: Team, delegate: TeamTableViewDelegate) {
+        
+        self.delegate = delegate
+        self.team = item
+        
+        containerVw.backgroundColor = item.id.background
+        
+        playbackBtn.addTarget(self,  action: #selector(didTapPlayback), for: .touchUpInside)
         
         
-        badgeImgVw.image = TeamType.arsenal.badge
         
-        playbackBtn.setImage(UIImage(systemName: "play.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32)),for: .normal)
+        badgeImgVw.image = item.id.badge
         
-        nameLbl.text = "Arsenal"
-        foundedLbl.text = "1000"
-        jobLbl.text = "Current Manager: Mikel Arteta"
-        infoLbl.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        playbackBtn.setImage(item.isPlaying ? Assets.pause : Assets.play,for: .normal)
+        
+        nameLbl.text = item.name
+        foundedLbl.text = item.founded
+        jobLbl.text = "Current \(item.manager.job.rawValue): \(item.manager.name)"
+        infoLbl.text = item.info
         
         self.contentView.addSubview(containerVw)
         containerVw.addSubview(contentStackVw)
@@ -135,15 +151,10 @@ class TeamTableViewCell: UITableViewCell {
             playbackBtn.trailingAnchor.constraint(equalTo: containerVw.trailingAnchor, constant: -8),
             playbackBtn.centerYAnchor.constraint(equalTo: containerVw.centerYAnchor)
 
-            
-            
-//
-//            contentStackVw.topAnchor.constraint(equalTo: self.containerVw.topAnchor, constant: 8),
-//            contentStackVw.bottomAnchor.constraint(equalTo: self.containerVw.bottomAnchor, constant: -8),
-//            contentStackVw.leadingAnchor.constraint(equalTo: self.containerVw.leadingAnchor, constant: 8),
-//            contentStackVw.trailingAnchor.constraint(equalTo: self.containerVw.trailingAnchor, constant: -8)
-//
-//
         ])
+    }
+    
+    @objc func didTapPlayback() {
+        print(team?.name)
     }
 }
