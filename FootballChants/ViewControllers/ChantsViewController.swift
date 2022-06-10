@@ -29,6 +29,7 @@ class ChantsViewController: UIViewController {
         super.loadView()
         setUp()
     }
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,11 +76,8 @@ extension ChantsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let team = teamsViewModel.teams[indexPath.row]
-        print(team)
         let cell = tableVw.dequeueReusableCell(withIdentifier: TeamTableViewCell.cellId, for: indexPath) as! TeamTableViewCell
-        
         cell.configure(with: team, delegate: self)
-        
         return cell
     }
     
@@ -89,7 +87,8 @@ extension ChantsViewController: UITableViewDataSource {
 
 extension ChantsViewController: TeamTableViewDelegate {
     func didTapPlayBack(for team: Team) {
-        print()
+        teamsViewModel.togglePlayback(for: team)
+        tableVw.reloadData()
     }
     
     

@@ -95,6 +95,12 @@ class TeamTableViewCell: UITableViewCell {
         
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.team = nil
+        self.delegate = nil
+        super.contentView.subviews.forEach { $0.removeFromSuperview()}
+    }
     
     func configure(with item: Team, delegate: TeamTableViewDelegate) {
         
@@ -155,6 +161,10 @@ class TeamTableViewCell: UITableViewCell {
     }
     
     @objc func didTapPlayback() {
-        print(team?.name)
+        
+        if let team = team {
+            delegate?.didTapPlayBack(for: team)
+        }
+
     }
 }
