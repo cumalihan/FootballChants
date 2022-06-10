@@ -14,5 +14,4 @@ enum Assets {
     
     static let pause = UIImage(systemName: "pause.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32))
     
-    
 }

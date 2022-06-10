@@ -10,7 +10,6 @@ import UIKit
 
 
 protocol TeamTableViewDelegate: class {
-    
     func didTapPlayBack(for team: Team)
 }
 
